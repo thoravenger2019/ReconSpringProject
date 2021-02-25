@@ -36,6 +36,7 @@ import org.xml.sax.SAXException;
 
 import com.admin.model.FileUploadModel;
 import com.admin.model.LenghtOfidx;
+import com.admin.model.TempConfig;
 import com.admin.model.TempTable;
 import com.admin.model.User;
 import com.admin.model.XmlClass;
@@ -1517,6 +1518,19 @@ public class Controller {
 
 		return gettemptable;
 
+	} 
+	
+	@PostMapping("/gettempconfig")
+	public List<JSONObject> gettempconfig(@RequestBody TempConfig tempconfig){
+		
+		System.out.println("HELLO");
+		System.out.println("jsonsrcreplacestring" + tempconfig.getJsonsrcreplacestring());
+		System.out.println("replacetbl" + tempconfig.getReplacetbl());
+		return null;
 	}
+	
+	
+	
+	
 
 }
