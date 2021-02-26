@@ -2079,4 +2079,11 @@ public class Trace_Service_Imp implements Trace_Service {
 		// TODO Auto-generated method stub
 		return traceDao.gettemptable(clientid,channelid,modeid,ruletype,tableNames,checkedCol);
 	}
+
+	@Override
+	public List<JSONObject> gettempconfig(String clientid, String channelid, String modeid, String ruletype,
+			String sourcetbl, String replacetbl, String jsonsrcreplacestring) {
+		// TODO Auto-generated method stub
+		return traceDao.gettempconfig(clientid,channelid,modeid,ruletype,sourcetbl,replacetbl,jsonsrcreplacestring);
+	}
 }

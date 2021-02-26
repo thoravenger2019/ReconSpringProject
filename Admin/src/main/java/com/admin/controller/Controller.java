@@ -624,7 +624,7 @@ public class Controller {
 				&& p_ModeID.equalsIgnoreCase("2") && fileType.equalsIgnoreCase("plaintext")) {
 			String line = "", str = "";
 			StringBuffer result = new StringBuffer();
-			String link = "C:\\Users\\suyog.mate.MAXIMUS\\git\\SpringReactProject\\Admin\\src\\main\\xmlFiles\\acq_ATM_NPCI.xml";
+			String link = "C:\\Users\\akshay.kirve\\git\\ReconSpringProject\\Admin\\src\\main\\xmlFiles\\acq_ATM_NPCI.xml";
 			BufferedReader br = new BufferedReader(new FileReader(link));
 			while ((line = br.readLine()) != null) {
 				result.append(line.trim());
@@ -669,7 +669,7 @@ public class Controller {
 				&& p_ModeID.equalsIgnoreCase("3") && fileType.equalsIgnoreCase("plaintext")) {
 			String line = "", str = "";
 			StringBuffer result = new StringBuffer();
-			String link = "C:\\Users\\suyog.mate.MAXIMUS\\git\\SpringReactProject\\Admin\\src\\main\\xmlFiles\\iss_atm_npci.xml";
+			String link = "C:\\Users\\akshay.kirve\\git\\ReconSpringProject\\Admin\\src\\main\\xmlFiles\\iss_atm_npci.xml";
 			BufferedReader br = new BufferedReader(new FileReader(link));
 			while ((line = br.readLine()) != null) {
 				result.append(line.trim());
@@ -711,29 +711,31 @@ public class Controller {
 			}
 			return JSONObjects;
 		} else if (statusInstr.equals("[not exist]") && p_VendorType.equalsIgnoreCase("CBS")) {
-			String line = "", str = "";
-			StringBuffer result = new StringBuffer();
-			String link = "C:\\Users\\suyog.mate.MAXIMUS\\git\\SpringReactProject\\Admin\\src\\main\\xmlFiles\\cbs_modeAll.xml";
-			BufferedReader br = new BufferedReader(new FileReader(link));
-			while ((line = br.readLine()) != null) {
-				result.append(line.trim());
-			}
-			str = result.toString();
-			System.out.println("str:  " + str);
-			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document doc = db.parse(new InputSource(new StringReader(str)));
-			doc.getDocumentElement().normalize();
-			NodeList nodeList = doc.getDocumentElement().getChildNodes();
-			List<JSONObject> JSONObjects = new ArrayList<JSONObject>(nodeList.getLength());
 
-			for (int i = 0; i < nodeList.getLength(); i++) {
-				JSONObject obj = new JSONObject();
-				String nodeName = nodeList.item(i).getNodeName();
-				Node childNode = nodeList.item(i);
-				NodeList childNodeList = childNode.getChildNodes();
+			if (fileExt.equalsIgnoreCase(".xls")) {
+				String line = "", str = "";
+				StringBuffer result = new StringBuffer();
+				String link = "C:\\Users\\akshay.kirve\\git\\ReconSpringProject\\Admin\\src\\main\\xmlFiles\\cbs_modeAll.xml";
+				BufferedReader br = new BufferedReader(new FileReader(link));
+				while ((line = br.readLine()) != null) {
+					result.append(line.trim());
+				}
+				str = result.toString();
+				System.out.println("str:  " + str);
+				DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+				DocumentBuilder db = dbf.newDocumentBuilder();
+				Document doc = db.parse(new InputSource(new StringReader(str)));
+				doc.getDocumentElement().normalize();
+				NodeList nodeList = doc.getDocumentElement().getChildNodes();
+				List<JSONObject> JSONObjects = new ArrayList<JSONObject>(nodeList.getLength());
 
-				String index = childNodeList.item(0).getNodeValue();
+				for (int i = 0; i < nodeList.getLength(); i++) {
+					JSONObject obj = new JSONObject();
+					String nodeName = nodeList.item(i).getNodeName();
+					Node childNode = nodeList.item(i);
+					NodeList childNodeList = childNode.getChildNodes();
+
+					String index = childNodeList.item(0).getNodeValue();
 //				System.out.println("startPos: "+startPos);
 //				Node startPosNode = childNodeList.item(0);
 
@@ -745,18 +747,65 @@ public class Controller {
 //				NodeList lengthNodeValue = lengthNode.getChildNodes();
 //				String lengthNodeValueNode = lengthNodeValue.item(0).getNodeValue();
 
-				obj.put("NodeName", nodeName);
-				obj.put("indexPosition", index);
+					obj.put("NodeName", nodeName);
+					obj.put("indexPosition", index);
 
-				System.out.println("NodeName:  " + nodeName);
-				System.out.println("indexPosition:  " + index);
-				JSONObjects.add(obj);
+					System.out.println("NodeName:  " + nodeName);
+					System.out.println("indexPosition:  " + index);
+					JSONObjects.add(obj);
+				}
+				return JSONObjects;
+
+			} else if (fileExt.equalsIgnoreCase(".txt")) {
+				String line = "", str = "";
+				StringBuffer result = new StringBuffer();
+				String link = "C:\\Users\\akshay.kirve\\git\\ReconSpringProject\\Admin\\src\\main\\xmlFiles\\CBS2.xml";
+				BufferedReader br = new BufferedReader(new FileReader(link));
+				while ((line = br.readLine()) != null) {
+					result.append(line.trim());
+				}
+				str = result.toString();
+				System.out.println("str:  " + str);
+				DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+				DocumentBuilder db = dbf.newDocumentBuilder();
+				Document doc = db.parse(new InputSource(new StringReader(str)));
+				doc.getDocumentElement().normalize();
+				NodeList nodeList = doc.getDocumentElement().getChildNodes();
+				List<JSONObject> JSONObjects = new ArrayList<JSONObject>(nodeList.getLength());
+
+				for (int i = 0; i < nodeList.getLength(); i++) {
+					JSONObject obj = new JSONObject();
+					String nodeName = nodeList.item(i).getNodeName();
+					Node childNode = nodeList.item(i);
+					NodeList childNodeList = childNode.getChildNodes();
+
+					String startPos = childNodeList.item(0).getNodeName();
+					Node startPosNode = childNodeList.item(0);
+
+					NodeList startPosNodeValue = startPosNode.getChildNodes();
+					String startPosNodeValueNode = startPosNodeValue.item(0).getNodeValue();
+
+					String length = childNodeList.item(1).getNodeName();
+					Node lengthNode = childNodeList.item(1);
+					NodeList lengthNodeValue = lengthNode.getChildNodes();
+					String lengthNodeValueNode = lengthNodeValue.item(0).getNodeValue();
+
+					obj.put("NodeName", nodeName);
+					obj.put("startPosNodeValueNode", startPosNodeValueNode);
+					obj.put("LengthNodeValueNode", lengthNodeValueNode);
+
+					System.out.println("NodeName:  " + nodeName);
+					System.out.println("startPosNodeValueNode:  " + startPosNodeValueNode);
+					System.out.println("LengthNodeValueNode:  " + lengthNodeValueNode);
+					JSONObjects.add(obj);
+				}
+				return JSONObjects;
 			}
-			return JSONObjects;
+
 		} else if (statusInstr.equals("[not exist]") && p_VendorType.equalsIgnoreCase("Switch")) {
 			String line = "", str = "";
 			StringBuffer result = new StringBuffer();
-			String link = "C:\\Users\\suyog.mate.MAXIMUS\\git\\SpringReactProject\\Admin\\src\\main\\xmlFiles\\switchXmlAll.xml";
+			String link = "C:\\Users\\akshay.kirve\\git\\ReconSpringProject\\Admin\\src\\main\\xmlFiles\\switchXmlAll.xml";
 			BufferedReader br = new BufferedReader(new FileReader(link));
 			while ((line = br.readLine()) != null) {
 				result.append(line.trim());
@@ -800,7 +849,7 @@ public class Controller {
 		} else if (statusInstr.equals("[not exist]") && p_VendorType.equalsIgnoreCase("EJ")) {
 			String line = "", str = "";
 			StringBuffer result = new StringBuffer();
-			String link = "C:\\Users\\suyog.mate.MAXIMUS\\git\\SpringReactProject\\Admin\\src\\main\\xmlFiles\\ejXMl.xml";
+			String link = "C:\\Users\\akshay.kirve\\git\\ReconSpringProject\\Admin\\src\\main\\xmlFiles\\ejXMl.xml";
 			BufferedReader br = new BufferedReader(new FileReader(link));
 			while ((line = br.readLine()) != null) {
 				result.append(line.trim());
@@ -844,7 +893,7 @@ public class Controller {
 				&& p_ModeID.equalsIgnoreCase("0")) {
 			String line = "", str = "";
 			StringBuffer result = new StringBuffer();
-			String link = "C:\\Users\\suyog.mate.MAXIMUS\\git\\SpringReactProject\\Admin\\src\\main\\xmlFiles\\ntsl.xml";
+			String link = "C:\\Users\\akshay.kirve\\git\\ReconSpringProject\\Admin\\src\\main\\xmlFiles\\ntsl.xml";
 			BufferedReader br = new BufferedReader(new FileReader(link));
 			while ((line = br.readLine()) != null) {
 				result.append(line.trim());
@@ -1510,7 +1559,7 @@ public class Controller {
 
 	@PostMapping("/gettemptable")
 	public List<JSONObject> gettemptable(@RequestBody TempTable tempTable) {
-		System.out.println("tableNames "+tempTable.getTableNames());
+		System.out.println("tableNames " + tempTable.getTableNames());
 		System.out.println("checkedCol" + tempTable.getCheckedCol());
 
 		List<JSONObject> gettemptable = traceService.gettemptable(tempTable.getClientid(), tempTable.getChannelid(),
@@ -1518,19 +1567,17 @@ public class Controller {
 
 		return gettemptable;
 
-	} 
-	
+	}
+
 	@PostMapping("/gettempconfig")
-	public List<JSONObject> gettempconfig(@RequestBody TempConfig tempconfig){
-		
-		System.out.println("HELLO");
+	public List<JSONObject> gettempconfig(@RequestBody TempConfig tempconfig) {
+
 		System.out.println("jsonsrcreplacestring" + tempconfig.getJsonsrcreplacestring());
 		System.out.println("replacetbl" + tempconfig.getReplacetbl());
+		
+		List<JSONObject> gettempconfig = traceService.gettempconfig(tempconfig.getClientid(), tempconfig.getChannelid(), tempconfig.getModeid(),
+				tempconfig.getRuletype(),tempconfig.getSourcetbl(), tempconfig.getReplacetbl(), tempconfig.getJsonsrcreplacestring());
 		return null;
 	}
-	
-	
-	
-	
 
 }

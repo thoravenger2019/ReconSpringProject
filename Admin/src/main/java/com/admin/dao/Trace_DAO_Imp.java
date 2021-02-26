@@ -6791,6 +6791,197 @@ public class Trace_DAO_Imp implements Trace_DAO {
 					return arr;
 				}
 			}
+			else if (ext.equalsIgnoreCase("txt")) {
+
+				String participant_ID = null, transaction_Type = null, from_Account_Type = null, to_Account_Type = null,
+						RRN = null, response_Code = null, card_number = null, member_Number = null,
+						approval_Number = null, system_Trace_Audit_Number = null, transaction_Date = null,
+						transaction_Time = null, merchant_Category_Code = null, card_Acceptor_Settlement_Date = null,
+						card_Acceptor_ID = null, card_Acceptor_Terminal_ID = null,
+						card_Acceptor_Terminal_Location = null, acquirer_ID = null, acquirer_Settlement_Date = null,
+						transaction_Currency_code = null, transaction_Amount = null, actual_Transaction_Amount = null,
+						transaction_Acitivity_fee = null, acquirer_settlement_Currency_Code = null,
+						acquirer_settlement_Amount = null, acquirer_Settlement_Fee = null,
+						acquirer_settlement_processing_fee = null, transaction_Acquirer_Conversion_Rate = null;
+
+				File convFile = new File(glCbs.getOriginalFilename());
+				convFile.createNewFile();
+				FileOutputStream fos = new FileOutputStream(convFile);
+				fos.write(glCbs.getBytes());
+				fos.close();
+				List<String> content = Files.readAllLines(convFile.toPath());
+
+				String contentData = "";
+				String ForceMatch = glCbs.getOriginalFilename();
+				String cycle = ForceMatch.substring(15, 17);
+				String fileDate = ForceMatch.substring(8, 14).trim();
+				JSONObject obj = new JSONObject();
+
+				totalContent = content.size();
+
+				for (int i = 0; i < content.size(); i++) {
+					contentData = content.get(i);
+					for (int j = 0; j < nodeList.getLength(); j++) {
+						List<String> nodeData = getXmlFields(nodeList, nodeList.item(j).getNodeName(), j);
+						String nodeName = nodeList.item(j).getNodeName();
+						int startPos = Integer.parseInt(nodeData.get(1));
+						int length = Integer.parseInt(nodeData.get(2));
+
+						String contentFieldData = contentData.substring(startPos - 1, (startPos - 1) + length).trim();
+						obj.put(nodeName, contentFieldData);
+
+					}
+					String nodeName = null;
+
+					nodeName = nodeList.item(0).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						participant_ID = obj.get(nodeName).toString();
+
+					}
+
+					nodeName = nodeList.item(1).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						transaction_Type = obj.get(nodeName).toString();
+
+					}
+
+					nodeName = nodeList.item(2).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						from_Account_Type = obj.get(nodeName).toString();
+
+					}
+
+					nodeName = nodeList.item(3).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						to_Account_Type = obj.get(nodeName).toString();
+
+					}
+
+					nodeName = nodeList.item(4).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						RRN = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(5).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						response_Code = obj.get(nodeName).toString();
+					}
+					nodeName = nodeList.item(6).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						card_number = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(7).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						member_Number = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(8).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						approval_Number = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(9).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						system_Trace_Audit_Number = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(10).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						transaction_Date = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(11).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						transaction_Time = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(12).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						merchant_Category_Code = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(13).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						card_Acceptor_Settlement_Date = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(14).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						card_Acceptor_ID = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(15).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						card_Acceptor_Terminal_ID = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(16).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						card_Acceptor_Terminal_Location = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(17).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						acquirer_ID = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(18).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						acquirer_Settlement_Date = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(19).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						transaction_Currency_code = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(20).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						transaction_Amount = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(21).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						actual_Transaction_Amount = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(22).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						transaction_Acitivity_fee = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(23).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						acquirer_settlement_Currency_Code = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(24).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						acquirer_settlement_Amount = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(25).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						acquirer_Settlement_Fee = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(26).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						acquirer_settlement_processing_fee = obj.get(nodeName).toString();
+
+					}
+					nodeName = nodeList.item(27).getNodeName();
+					if (obj.containsKey(nodeName)) {
+						transaction_Acquirer_Conversion_Rate = obj.get(nodeName).toString();
+
+					}
+
+					count++;
+					System.out.println("count" + count);
+				}
+
+			}
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -10873,5 +11064,39 @@ public class Trace_DAO_Imp implements Trace_DAO {
 		}
 //		return JSONObjects;
 		return JSONObjects;
+	}
+
+	@Override
+	public List<JSONObject> gettempconfig(String clientid, String channelid, String modeid, String ruletype,
+			String sourcetbl, String replacetbl, String jsonsrcreplacestring) {
+			StoredProcedureQuery query = entityManager.createStoredProcedureQuery("");		
+			
+			query.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+			query.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+			query.registerStoredProcedureParameter(3, String.class, ParameterMode.IN);
+			query.registerStoredProcedureParameter(4, String.class, ParameterMode.IN);
+			query.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
+			query.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
+			query.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
+			query.registerStoredProcedureParameter(7, String.class, ParameterMode.REF_CURSOR);
+			
+			query.setParameter(1, clientid);
+			query.setParameter(2, channelid);
+			query.setParameter(3, modeid);
+			query.setParameter(4, ruletype);
+			query.setParameter(5, sourcetbl);
+			query.setParameter(6, replacetbl);
+			query.setParameter(7, jsonsrcreplacestring);
+			
+			query.execute();
+		
+//			List<Object[]> result = query.getResultList();
+//			List<JSONObject> JSONObjects = new ArrayList<JSONObject>(result.size());
+//			for (Object record : result) {
+//				JSONObject obj = new JSONObject();
+//				obj.put(key, value)
+//			}
+			
+		return null;
 	}
 }

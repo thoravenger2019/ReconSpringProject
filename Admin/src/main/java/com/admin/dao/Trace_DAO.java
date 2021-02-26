@@ -321,4 +321,7 @@ public interface Trace_DAO {
 	public List<JSONObject> gettemptable(String clientid, String channelid, String modeid, String ruletype,
 			String tableNames, String checkedCol);
 
+	public List<JSONObject> gettempconfig(String clientid, String channelid, String modeid, String ruletype,
+			String sourcetbl, String replacetbl, String jsonsrcreplacestring);
+
 }
