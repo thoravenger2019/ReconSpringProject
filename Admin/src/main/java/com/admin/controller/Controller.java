@@ -1577,7 +1577,7 @@ public class Controller {
 		
 		List<JSONObject> gettempconfig = traceService.gettempconfig(tempconfig.getClientid(), tempconfig.getChannelid(), tempconfig.getModeid(),
 				tempconfig.getRuletype(),tempconfig.getSourcetbl(), tempconfig.getReplacetbl(), tempconfig.getJsonsrcreplacestring());
-		return null;
+		return gettempconfig;
 	}
 
 }

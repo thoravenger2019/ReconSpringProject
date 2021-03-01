@@ -11069,7 +11069,7 @@ public class Trace_DAO_Imp implements Trace_DAO {
 	@Override
 	public List<JSONObject> gettempconfig(String clientid, String channelid, String modeid, String ruletype,
 			String sourcetbl, String replacetbl, String jsonsrcreplacestring) {
-			StoredProcedureQuery query = entityManager.createStoredProcedureQuery("");		
+			StoredProcedureQuery query = entityManager.createStoredProcedureQuery("sp_replace_column");		
 			
 			query.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
 			query.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
@@ -11078,7 +11078,7 @@ public class Trace_DAO_Imp implements Trace_DAO {
 			query.registerStoredProcedureParameter(5, String.class, ParameterMode.IN);
 			query.registerStoredProcedureParameter(6, String.class, ParameterMode.IN);
 			query.registerStoredProcedureParameter(7, String.class, ParameterMode.IN);
-			query.registerStoredProcedureParameter(7, String.class, ParameterMode.REF_CURSOR);
+			query.registerStoredProcedureParameter(8, String.class, ParameterMode.REF_CURSOR);
 			
 			query.setParameter(1, clientid);
 			query.setParameter(2, channelid);
@@ -11090,13 +11090,14 @@ public class Trace_DAO_Imp implements Trace_DAO {
 			
 			query.execute();
 		
-//			List<Object[]> result = query.getResultList();
-//			List<JSONObject> JSONObjects = new ArrayList<JSONObject>(result.size());
-//			for (Object record : result) {
-//				JSONObject obj = new JSONObject();
-//				obj.put(key, value)
-//			}
+			List<Object[]> result = query.getResultList();
+			List<JSONObject> JSONObjects = new ArrayList<JSONObject>(result.size());
+			for (Object record : result) {
+				JSONObject obj = new JSONObject();
+				obj.put("STATUS", result.get(0));
+				JSONObjects.add(obj);
+			}
 			
-		return null;
+		return JSONObjects;
 	}
 }
