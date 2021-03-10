@@ -1564,7 +1564,7 @@ public class Controller {
 
 		List<JSONObject> gettemptable = traceService.gettemptable(tempTable.getClientid(), tempTable.getChannelid(),
 				tempTable.getModeid(), tempTable.getRuletype(), tempTable.getTableNames(), tempTable.getCheckedCol());
-
+System.out.println("gettemptable"+gettemptable.toString());
 		return gettemptable;
 
 	}
