@@ -6836,145 +6836,146 @@ public class Trace_DAO_Imp implements Trace_DAO {
 					nodeName = nodeList.item(0).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						participant_ID = obj.get(nodeName).toString();
-
+						System.out.println("participant_ID: "+participant_ID);
 					}
 
 					nodeName = nodeList.item(1).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						transaction_Type = obj.get(nodeName).toString();
-
+						System.out.println("transaction_Type: "+transaction_Type);
 					}
 
 					nodeName = nodeList.item(2).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						from_Account_Type = obj.get(nodeName).toString();
-
+						System.out.println("from_Account_Type: "+from_Account_Type);
 					}
 
 					nodeName = nodeList.item(3).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						to_Account_Type = obj.get(nodeName).toString();
-
+						System.out.println("to_Account_Type: "+to_Account_Type);
 					}
 
 					nodeName = nodeList.item(4).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						RRN = obj.get(nodeName).toString();
-
+						System.out.println("RRN: "+RRN);
 					}
 					nodeName = nodeList.item(5).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						response_Code = obj.get(nodeName).toString();
+						System.out.println("response_Code: "+response_Code);
 					}
 					nodeName = nodeList.item(6).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						card_number = obj.get(nodeName).toString();
-
+						System.out.println("card_number: "+card_number);
 					}
 					nodeName = nodeList.item(7).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						member_Number = obj.get(nodeName).toString();
-
+						System.out.println("member_Number: "+member_Number);
 					}
 					nodeName = nodeList.item(8).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						approval_Number = obj.get(nodeName).toString();
-
+						System.out.println("approval_Number: "+approval_Number);
 					}
 					nodeName = nodeList.item(9).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						system_Trace_Audit_Number = obj.get(nodeName).toString();
-
+						System.out.println("system_Trace_Audit_Number: "+system_Trace_Audit_Number);
 					}
 					nodeName = nodeList.item(10).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						transaction_Date = obj.get(nodeName).toString();
-
+						System.out.println("transaction_Date: "+transaction_Date);
 					}
 					nodeName = nodeList.item(11).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						transaction_Time = obj.get(nodeName).toString();
-
+						System.out.println("transaction_Time: "+transaction_Time);
 					}
 					nodeName = nodeList.item(12).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						merchant_Category_Code = obj.get(nodeName).toString();
-
+						System.out.println("merchant_Category_Code: "+merchant_Category_Code);
 					}
 					nodeName = nodeList.item(13).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						card_Acceptor_Settlement_Date = obj.get(nodeName).toString();
-
+						System.out.println("card_Acceptor_Settlement_Date: "+card_Acceptor_Settlement_Date);
 					}
 					nodeName = nodeList.item(14).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						card_Acceptor_ID = obj.get(nodeName).toString();
-
+						System.out.println("card_Acceptor_ID: "+card_Acceptor_ID);
 					}
 					nodeName = nodeList.item(15).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						card_Acceptor_Terminal_ID = obj.get(nodeName).toString();
-
+						System.out.println("card_Acceptor_Terminal_ID: "+card_Acceptor_Terminal_ID);
 					}
 					nodeName = nodeList.item(16).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						card_Acceptor_Terminal_Location = obj.get(nodeName).toString();
-
+						System.out.println("card_Acceptor_Terminal_Location: "+card_Acceptor_Terminal_Location);
 					}
 					nodeName = nodeList.item(17).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						acquirer_ID = obj.get(nodeName).toString();
-
+						System.out.println("acquirer_ID: "+acquirer_ID);
 					}
 					nodeName = nodeList.item(18).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						acquirer_Settlement_Date = obj.get(nodeName).toString();
-
+						System.out.println("acquirer_Settlement_Date: "+acquirer_Settlement_Date);
 					}
 					nodeName = nodeList.item(19).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						transaction_Currency_code = obj.get(nodeName).toString();
-
+						System.out.println("transaction_Currency_code: "+transaction_Currency_code);
 					}
 					nodeName = nodeList.item(20).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						transaction_Amount = obj.get(nodeName).toString();
-
+						System.out.println("transaction_Amount: "+transaction_Amount);
 					}
 					nodeName = nodeList.item(21).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						actual_Transaction_Amount = obj.get(nodeName).toString();
-
+						System.out.println("actual_Transaction_Amount: "+actual_Transaction_Amount);
 					}
 					nodeName = nodeList.item(22).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						transaction_Acitivity_fee = obj.get(nodeName).toString();
-
+						System.out.println("transaction_Acitivity_fee: "+transaction_Acitivity_fee);
 					}
 					nodeName = nodeList.item(23).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						acquirer_settlement_Currency_Code = obj.get(nodeName).toString();
-
+						System.out.println("acquirer_settlement_Currency_Code: "+acquirer_settlement_Currency_Code);
 					}
 					nodeName = nodeList.item(24).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						acquirer_settlement_Amount = obj.get(nodeName).toString();
-
+						 System.out.println("acquirer_settlement_Amount: "+acquirer_settlement_Amount);
 					}
 					nodeName = nodeList.item(25).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						acquirer_Settlement_Fee = obj.get(nodeName).toString();
-
+						System.out.println("acquirer_Settlement_Fee: "+acquirer_Settlement_Fee);
 					}
 					nodeName = nodeList.item(26).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						acquirer_settlement_processing_fee = obj.get(nodeName).toString();
-
+						System.out.println("acquirer_settlement_processing_fee: "+acquirer_settlement_processing_fee);
 					}
 					nodeName = nodeList.item(27).getNodeName();
 					if (obj.containsKey(nodeName)) {
 						transaction_Acquirer_Conversion_Rate = obj.get(nodeName).toString();
-
+						System.out.println("transaction_Acquirer_Conversion_Rate: "+transaction_Acquirer_Conversion_Rate);
 					}
 
 					count++;
