@@ -612,6 +612,8 @@ public class Controller {
 				p_ModeID, p_VendorID, fileType, fileExt, filePrefix);
 		System.out.println("fileType" + fileType);
 		System.out.println("fileExt:  " + fileExt);
+		
+		System.out.println("getFileFormatHistory:  " + getFileFormatHistory.toString());
 		String statusInstr = "";
 		JSONObject status = getFileFormatHistory.get(0);
 		try {
